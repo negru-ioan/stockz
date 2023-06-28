@@ -1,7 +1,7 @@
-import Image from "next/image";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import MobileNavbar from "@/components/MobileNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,94 +19,8 @@ export default function RootLayout({
       <html lang="en">
          <body className={inter.className}>
             <div className="flex">
-               <nav className="h-screen w-[250px] fixed top-0 left-0 bg-white">
-                  <div className="flex justify-between sm:justify-normal flex-col pl-3 py-3">
-                     <div className="logo">
-                        <Image
-                           className="saturate-200"
-                           src="/logo2.png"
-                           alt="logo"
-                           width={130}
-                           height={130}
-                        />
-                     </div>
-                     <div className="">
-                        <ul className="list-none font-bold text-apple-800 outline-none">
-                           <li>
-                              <Image
-                                 className="opacity-60"
-                                 src="/dashboard2.png"
-                                 alt="dashboard"
-                                 width={22}
-                                 height={22}
-                              />
-                              <Link href="/sds">Dashboard</Link>
-                           </li>
-                           <li>
-                              <Image
-                                 src="/briefcase.png"
-                                 alt="stock"
-                                 width={20}
-                                 height={20}
-                              />
-                              <Link href="">Stocks</Link>
-                           </li>
-                           <li>
-                              <Image
-                                 // className="transform -translate-x-[0.5px]"
-                                 src="/blockchain.png"
-                                 alt="crypto"
-                                 width={22}
-                                 height={18}
-                              />
-                              <Link href="">Crypto</Link>
-                           </li>
-                           <li>
-                              <Image
-                                 src="/stack2.png"
-                                 alt="etf's"
-                                 width={22}
-                                 height={20}
-                              />
-                              <Link href="">ETF's</Link>
-                           </li>
-                           <li>
-                              <Image
-                                 src="/gear.png"
-                                 alt="settings"
-                                 width={22}
-                                 height={20}
-                              />
-                              <Link href="">Settings</Link>
-                           </li>
-                        </ul>
-
-                        <button
-                           type="button"
-                           className=""
-                        >
-                           <span
-                              role="img"
-                              aria-label="menu"
-                              className="anticon anticon-menu"
-                              style={{ fontSize: 25 }}
-                           >
-                              <svg
-                                 viewBox="64 64 896 896"
-                                 focusable="false"
-                                 data-icon="menu"
-                                 width="1em"
-                                 height="1em"
-                                 fill="currentColor"
-                                 aria-hidden="true"
-                              >
-                                 <path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z" />
-                              </svg>
-                           </span>
-                        </button>
-                     </div>
-                  </div>
-               </nav>
+               <Navbar />
+               <MobileNavbar />
                {children}
             </div>
          </body>
