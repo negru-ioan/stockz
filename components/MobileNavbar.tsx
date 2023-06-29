@@ -10,7 +10,7 @@ function MobileNavbar() {
    const currentLocation = { borderBottom: "2px solid #32cd32" };
 
    return (
-      <div className="mobile_navbar rounded-lg fixed bottom-[1px] left-0 right-0 w-full flex justify-center items-center h-[50px] px-4 sm:hidden">
+      <div className="mobile_navbar rounded-lg fixed bottom-[1px] left-0 right-0 w-full flex justify-center items-center h-[50px] px-4 sm:hidden z-50">
          <ul className="list-none font-bold outline-none flex justify-between items-center w-full h-full">
             <div className="mobile_navbar__li">
                <Link

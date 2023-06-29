@@ -1,11 +1,12 @@
 interface MenuProps {
+   open: boolean;
    toggle: () => void;
 }
 
-function Menu({ toggle }: MenuProps) {
+function Menu({ open, toggle }: MenuProps) {
    return (
-      <div className="w-full p-2">
-         <button type="button" onClick={toggle}>
+      <div className="w-full p-2 flex cursor-pointer" onClick={toggle}>
+         <button type="button">
             <span
                role="img"
                aria-label="menu"
@@ -25,6 +26,9 @@ function Menu({ toggle }: MenuProps) {
                </svg>
             </span>
          </button>
+         {open && (
+            <p className="ml-4 text-lg font-bold text-apple-800">Close</p>
+         )}
       </div>
    );
 }

@@ -6,19 +6,26 @@ import Menu from "./Menu";
 import { usePathname } from "next/navigation";
 
 function Navbar() {
-   const pathname = usePathname();
-   const [open, setOpen] = useState(window.innerWidth > 768);
+   const [open, setOpen] = useState(false);
    const toggle = () => setOpen((prev) => !prev);
+   const pathname = usePathname();
    const currentLocation = { borderRight: "2px solid #54d454" };
    return (
+      // <div
+      //    className="max-sm:hidden"
+      //    style={{
+      //       width: open ? "196px" : "70px",
+      //       borderRight: "1px solid #ccc",
+      //    }}
+      // >
       <nav
          // className="absolute bottom-0 left-0 right-0 z-50 w-full bg-white shadow-md flex justify-between items-center px-3 py-3"
-         className="hidden sm:block h-screen fixed top-0 left-0 bg-white max-md:w-16"
-         style={{ width: open ? "230px" : "65px" }}
+         className="hidden sm:block h-screen fixed top-0 left-0 bg-white max-md:w-16 z-50 border-r border-apple-300"
+         style={{ width: open ? "170px" : "65px" }}
       >
          <div className="flex justify-between sm:justify-normal flex-col pl-3 py-3 h-full">
             {open && (
-               <Link href="/" className="logo max-md:hidden transition-transform duration-1000 ease-in-out">
+               <Link href="/" className="logo max-md:hidden">
                   <Image
                      className="saturate-200"
                      src="/logo2.png"
@@ -37,7 +44,7 @@ function Navbar() {
                         className="nav_link"
                         style={pathname == "/" ? currentLocation : {}}
                      >
-                        <Image
+                        <img
                            className="opacity-60"
                            src="/dashboard.png"
                            alt="dashboard"
@@ -110,10 +117,11 @@ function Navbar() {
                   </li>
                </ul>
 
-               <Menu toggle={toggle} />
+               <Menu toggle={toggle} open={open} />
             </div>
          </div>
       </nav>
+      // </div>
    );
 }
 

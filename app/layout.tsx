@@ -1,9 +1,11 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
+import { Recursive } from "next/font/google";
+// import Navbar from "@/components/Navbar";
 import MobileNavbar from "@/components/MobileNavbar";
+import Navbar from "@/components/Navbar";
+// import NavbarContainer from "@/components/NavbarContainer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Recursive({ subsets: ["latin"] });
 
 export const metadata = {
    title: "Create Next App",
