@@ -37,12 +37,6 @@ async function changeStock(stock: Props_fetchStockPrices | null) {
    return await fetchStockPrices(options);
 }
 
-// const tabs = {
-//    "1H": "1h",
-//    "1D": "1day",
-//    "1M": "1month",
-//    "1W": "1week",
-// };
 const tabs = ["1h", "1day", "1month", "1week"];
 
 export const StockContext = createContext({
@@ -51,17 +45,7 @@ export const StockContext = createContext({
    selectedTab: tabs[2],
    tabs,
    setSelectedTab: (tab: string) => {},
-   // changeTab: (str: string) => {
-   //    str;
-   // },
 });
-
-type TabProps = {
-   "1H": string;
-   "1D": string;
-   "1M": string;
-   "1W": string;
-};
 
 export const StockProvider = ({ children }: any) => {
    const [selectedTab, setSelectedTab] = useState(tabs[2]);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import LineChart from "./LineChart";
 import { StockContext } from "@/context/StockContext";
 
@@ -13,7 +13,6 @@ function ChartPanel() {
       "1month": "1M",
       "1week": "1W",
    };
-   //    console.log("stock from ChrtPanel", stock);
    return (
       <div className="flex justify-center w-full rounded-lg border border-gray-400 pt-0 bg-white my-[75px] sm:my-7">
          <div className="flex flex-col max-sm:flex-col-reverse items-center w-full">
@@ -56,9 +55,7 @@ function ChartPanel() {
                      data={stock.values
                         .map((obj) => parseFloat(Number(obj.open).toFixed(2)))
                         .reverse()}
-                     labels={stock.values
-                        .map((obj) => obj.datetime.replace(/20/i, ""))
-                        .reverse()}
+                     labels={stock.values.map((obj) => obj.datetime).reverse()}
                      status={stock.status}
                   />
                </div>
