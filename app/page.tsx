@@ -3,6 +3,7 @@ import TopNavbar from "@/components/TopNavbar";
 // import LineChart from "@/components/LineChart";
 // import Tabs from "@/components/Tabs";
 import ChartPanel from "@/components/ChartPanel";
+import SearchBar from "@/components/SearchBar";
 
 export default function Home() {
    return (

@@ -64,9 +64,9 @@ export const StockProvider = ({ children }: any) => {
       );
    }
 
-   useEffect(() => {
-      changeTab();
-   }, [selectedTab]);
+   // useEffect(() => {
+   //    changeTab();
+   // }, [selectedTab]);
 
    return (
       <StockContext.Provider
