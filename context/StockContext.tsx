@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useState, useEffect } from "react";
-import fetchStockPrices from "../fetch/time_series";
+import fetchStockPrices from "../fetch/fetchStockPrice";
 import { Props_fetchStockPrices, SelectedTab } from "../types";
 
 const tsla = {
@@ -65,7 +65,7 @@ export const StockProvider = ({ children }: any) => {
    }
 
    // useEffect(() => {
-   //    changeTab();
+   //    changeTab();  // Fetch stock
    // }, [selectedTab]);
 
    return (

@@ -14,7 +14,7 @@ function ChartPanel() {
       "1week": "1W",
    };
    return (
-      <div className="flex justify-center w-full rounded-lg border border-gray-400 pt-0 bg-white my-[75px] sm:my-7">
+      <div className="flex justify-center w-full rounded-lg border border-gray-400 pt-0 bg-white mb-12 mt-[75px] sm:my-7">
          <div className="flex flex-col max-sm:flex-col-reverse items-center w-full">
             {/* Title */}
             <div className="flex justify-between w-full max-sm:p-2 sm:px-5 sm:py-3 items-center">

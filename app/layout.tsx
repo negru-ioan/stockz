@@ -4,6 +4,7 @@ import { Recursive } from "next/font/google";
 import MobileNavbar from "@/components/MobileNavbar";
 import Navbar from "@/components/Navbar";
 import { StockProvider } from "@/context/StockContext";
+import IndexesProvider from "@/context/IndexesContext";
 // import NavbarContainer from "@/components/NavbarContainer";
 
 const inter = Recursive({ subsets: ["latin"] });
@@ -24,7 +25,9 @@ export default function RootLayout({
             <div className="flex">
                <Navbar />
                <MobileNavbar />
-               <StockProvider>{children}</StockProvider>
+               <IndexesProvider>
+                  <StockProvider>{children}</StockProvider>
+               </IndexesProvider>
             </div>
          </body>
       </html>
