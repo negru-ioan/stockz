@@ -2,6 +2,7 @@ import TopNavbar from "@/components/TopNavbar";
 import ChartPanel from "@/components/ChartPanel";
 import IndexCard from "@/components/IndexCard";
 import indexes from "@/indexes";
+import TopGainers from "@/components/TopGainers";
 
 export default function Home() {
    const pngs = {
@@ -20,23 +21,16 @@ export default function Home() {
             Global Indexes Change
          </h1>
 
-         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 max-sm:w-full">
+         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 max-sm:w-full max-lg:gap-x-24 max-lg:gap-y-8 ">
             {/* {indexes.MarketRegions.USA.slice(0, 4).map((index, i) => { */}
             {indexes.MarketRegions.USA.map((index, i) => {
                return (
                   <IndexCard index={index} img={Object.values(pngs)[i]} i={i} />
                );
             })}
-            {/* {indexes.MarketRegions.Europe.map((index, i) => {
-               return <IndexCard index={index} img={Object.values(pngs)[i]} />;
-            })}
-            {indexes.MarketRegions.Asia.map((index, i) => {
-               return <IndexCard index={index} img={Object.values(pngs)[i]} />;
-            })}
-            {indexes.MarketRegions.CAN.map((index, i) => {
-               return <IndexCard index={index} img={Object.values(pngs)[i]} />;
-            })} */}
          </div>
+
+         <TopGainers />
       </main>
    );
 }

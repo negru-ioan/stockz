@@ -19,7 +19,7 @@ function MobileNavbar() {
                   style={pathname == "/" ? currentLocation : {}}
                >
                   <Image
-                     className="opacity-60"
+                     className="opacity-70"
                      src="/dashboard.png"
                      alt="dashboard"
                      width={22}

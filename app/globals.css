@@ -70,9 +70,12 @@ li {
 }
 
 .mobile_navbar {
-   backdrop-filter: blur(10px);
+   backdrop-filter: blur(15px);
    width: 99%;
    transform: translateX(2px);
+   padding-bottom: 9px;
+   bottom: -9px;
+   background-color: rgb(255 255 255 / 61%);
    /* border-t-[0.1px] border-apple-700 */
 }
 
@@ -83,14 +86,6 @@ li {
 .mobile_navbar__li:hover {
    /* border-bottom: 2px solid #54d454; */
    @apply border-b border border-apple-900;
-}
-
-.searchBar {
-   /* width: 100%;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   border-radius: 999px; */
 }
 
 .bor {
