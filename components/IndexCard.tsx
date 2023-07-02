@@ -37,7 +37,7 @@ const IndexCard: FC<{ index: IndexProps; img: string; i: number }> = ({
          }`}
       >
          <div className="flex py-2">
-            <div className="flex flex-col gap-1 sm:gap-3 ">
+            <div className="flex flex-col gap-1">
                <p className="text-base text-gray-600">{index.Name}</p>
                <p className="text-2xl font-bold text-gray-900">
                   ${index.Price}

@@ -166,3 +166,12 @@ ul::-webkit-scrollbar-thumb {
    flex: 0 0 auto;
    scroll-snap-align: start;
 }
+
+/* .top_gainers {
+   overflow-y: scroll;
+   overflow-x: hidden;
+}
+
+.top_gainers::-webkit-scrollbar {
+   display: none;
+} */

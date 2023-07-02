@@ -1,22 +1,19 @@
-async function fetchIndexes() {
-   const url = "https://ms-finance.p.rapidapi.com/market/get-summary";
+export default async function fetchMovers() {
+   const url =
+      "https://schwab.p.rapidapi.com/market/get-movers?rankType=NetGainers&exchange=US&sectorCusip=ALL";
    const options = {
       method: "GET",
       headers: {
          "X-RapidAPI-Key": process.env.NEXT_PUBLIC_API_KEY || "",
-         "X-RapidAPI-Host": "ms-finance.p.rapidapi.com",
+         "X-RapidAPI-Host": "schwab.p.rapidapi.com",
       },
    };
 
    try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log("fetchIndexes", result);
       return result;
    } catch (error) {
       console.error(error);
-      return { MarketRegions: [] };
    }
 }
-
-export default fetchIndexes;

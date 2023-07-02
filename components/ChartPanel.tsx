@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import LineChart from "./LineChart";
 import { StockContext } from "@/context/StockContext";
 
