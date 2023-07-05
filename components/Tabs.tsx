@@ -4,16 +4,19 @@
 type Props = {
    selectedTab: string;
    tabs: string[];
+   onClick: (tab: string) => void;
 };
 
-function Tabs({ selectedTab, tabs }: Props) {
+function Tabs({ selectedTab, tabs, onClick }: Props) {
    // const { selectedTab, tabs } = useContext(StockContext);
    return (
-      <div className="max-sm:w-full grid grid-cols-4 gap-2 h-min rounded-lg bg-apple-100 mt-1 py-1">
+      // <div className="max-sm:w-full grid grid-cols-4 gap-2 h-min rounded-lg bg-apple-100 mt-1 py-1">
+      <div className="w-max flex flex-row gap-2 h-min rounded-lg bg-apple-100 mt-1 p-1">
          {tabs.map((tab, index) => {
             return (
                <div
                   key={tab}
+                  onClick={() => onClick(tab)}
                   className={`border-slate-200 py-1 px-3 cursor-pointer ${
                      selectedTab === tab
                         ? "bg-white text-black rounded-lg border border-slate-300"

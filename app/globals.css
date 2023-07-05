@@ -15,7 +15,7 @@
    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-html::-webkit-scrollbar {
+.bar_chart_tabs::-webkit-scrollbar {
    display: none;
 }
 
@@ -167,11 +167,24 @@ ul::-webkit-scrollbar-thumb {
    scroll-snap-align: start;
 }
 
-/* .top_gainers {
+.top_gainers {
    overflow-y: scroll;
    overflow-x: hidden;
+   width: 100%;
 }
 
 .top_gainers::-webkit-scrollbar {
    display: none;
-} */
+}
+
+@media (min-width: 768px) {
+   .movers_container > div:nth-child(2) {
+      display: none;
+   }
+}
+
+@media (min-width: 992px) {
+   .movers_container > div:nth-child(2) {
+      display: block;
+   }
+}

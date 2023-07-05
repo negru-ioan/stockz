@@ -5,6 +5,7 @@ import MobileNavbar from "@/components/MobileNavbar";
 import Navbar from "@/components/Navbar";
 import { StockProvider } from "@/context/StockContext";
 import IndexesProvider from "@/context/IndexesContext";
+import TopNavbar from "@/components/TopNavbar";
 // import NavbarContainer from "@/components/NavbarContainer";
 
 const inter = Recursive({ subsets: ["latin"] });
@@ -25,8 +26,14 @@ export default function RootLayout({
             <div className="flex">
                <Navbar />
                <MobileNavbar />
+
                <IndexesProvider>
-                  <StockProvider>{children}</StockProvider>
+                  <StockProvider>
+                     <main className="flex min-h-screen w-full flex-col items-center max-sm:px-2 pl-[89px] pr-6 lg:pr-16 lg:pl-[127px] pb-6 bg-gradient-to-bl to-apple-200 from-apple-100">
+                        <TopNavbar />
+                        {children}
+                     </main>
+                  </StockProvider>
                </IndexesProvider>
             </div>
          </body>

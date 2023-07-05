@@ -14,17 +14,17 @@ const pngs = {
 function GlobalIndexes() {
    let selected = [2, 2, 0, 0];
    const [indexes, setIndexes] = useState([]);
-   // useEffect(() => {
-   //    fetchIndexes().then((indexes) => {
-   //       if (typeof indexes === "object") {
-   //          setIndexes(
-   //             Object.values(indexes.MarketRegions).map(
-   //                (arr, i) => arr[selected[i]]
-   //             )
-   //          );
-   //       }
-   //    });
-   // }, []);
+   useEffect(() => {
+      fetchIndexes().then((indexes) => {
+         if (typeof indexes === "object") {
+            setIndexes(
+               Object.values(indexes.MarketRegions).map(
+                  (arr, i) => arr[selected[i]]
+               )
+            );
+         }
+      });
+   }, []);
 
    return (
       <>

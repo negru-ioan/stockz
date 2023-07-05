@@ -14,28 +14,28 @@ function Navbar() {
       {
          pathname: "/",
          img: "/dashboard.png",
-         alt: "dashboard",
+         name: "Dashboard",
          width: 22,
          height: 22,
       },
       {
          pathname: "/stocks",
          img: "/briefcase.png",
-         alt: "stock",
+         name: "Stocks",
          width: 20,
          height: 20,
       },
       {
          pathname: "/crypto",
          img: "/blockchain.png",
-         alt: "crypto",
+         name: "Crypto",
          width: 22,
          height: 18,
       },
       {
          pathname: "/settings",
          img: "/gear.png",
-         alt: "settings",
+         name: "Settings",
          width: 22,
          height: 20,
       },
@@ -63,6 +63,7 @@ function Navbar() {
                   {navLinks.map((link) => {
                      return (
                         <li
+                           key={link.name}
                            style={
                               pathname == link.pathname ? currentLocation : {}
                            }
@@ -70,11 +71,11 @@ function Navbar() {
                            <Link href={link.pathname} className="nav_link">
                               <img
                                  src={link.img}
-                                 alt={link.alt}
+                                 alt={link.name}
                                  width={link.width}
                                  height={link.height}
                               />
-                              {open && <span> Dashboard </span>}
+                              {open && <span> {link.name} </span>}
                            </Link>
                         </li>
                      );

@@ -3,7 +3,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import fetchStockPrices from "../fetch/fetchStockPrice";
 import { Props_fetchStockPrices, SelectedTab } from "../types";
-
+import meeegaStock from "@/megaStock";
 const tsla = {
    meta: {
       symbol: "TSLA",
@@ -27,29 +27,24 @@ const tsla = {
    status: "NOT OK",
 };
 
-async function changeStock(stock: Props_fetchStockPrices | null) {
-   const options: Props_fetchStockPrices = {
-      symbol: stock?.symbol || "TSLA",
-      interval: stock?.interval || "1month",
-      outputsize: stock?.outputsize || "30",
-      format: stock?.format || "json",
-   };
-   return await fetchStockPrices(options);
-}
-
 const tabs = ["1h", "1day", "1month", "1week"];
 
 export const StockContext = createContext({
+   megaStock: meeegaStock,
+   // setMegaStock: (stock: object) => {},
+   setMegaStock: (stock: any) => {},
    stock: tsla,
-   changeStock,
    selectedTab: tabs[2],
    tabs,
+   changeTab: (tab: SelectedTab, symbol: string) => {},
+   changeStock: async (stock: Props_fetchStockPrices | null) => {},
    setSelectedTab: (tab: string) => {},
 });
 
 export const StockProvider = ({ children }: any) => {
    const [selectedTab, setSelectedTab] = useState(tabs[2]);
    const [stock, setStock] = useState(tsla);
+   const [megaStock, setMegaStock] = useState(meeegaStock);
    const options: Props_fetchStockPrices = {
       symbol: "TSLA",
       interval: "1month",
@@ -57,20 +52,48 @@ export const StockProvider = ({ children }: any) => {
       format: "json",
    };
 
-   function changeTab() {
-      console.log("tab", selectedTab);
-      changeStock({ ...options, interval: selectedTab as SelectedTab }).then(
-         (data): any => setStock(data)
+   async function changeStock(stock: Props_fetchStockPrices | null) {
+      const options: Props_fetchStockPrices = {
+         symbol: stock?.symbol || "TSLA",
+         interval: stock?.interval || "1month",
+         outputsize: stock?.outputsize || "30",
+         format: stock?.format || "json",
+      };
+      const res = await fetchStockPrices(options);
+      setStock(res);
+      return res;
+   }
+
+   // function changeTab() {
+   //    changeStock({ ...options, interval: selectedTab as SelectedTab }).then(
+   //       (data): any => setStock(data)
+   //    );
+   // }
+
+   function changeTab(tab: SelectedTab, symbol: string) {
+      console.log({ ...options, symbol, interval: tab }, 69420);
+      changeStock({ ...options, symbol, interval: tab }).then((data): any =>
+         setStock(data)
       );
+      setSelectedTab(tab);
    }
 
    // useEffect(() => {
-   //    changeTab();  // Fetch stock
+   //    changeTab(); // Fetch stock
    // }, [selectedTab]);
 
    return (
       <StockContext.Provider
-         value={{ stock, changeStock, selectedTab, tabs, setSelectedTab }}
+         value={{
+            megaStock,
+            setMegaStock,
+            stock,
+            selectedTab,
+            tabs,
+            changeStock,
+            setSelectedTab,
+            changeTab,
+         }}
       >
          {children}
       </StockContext.Provider>

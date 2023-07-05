@@ -20,9 +20,9 @@ export default async function fetchStockPrices({
    try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
+      console.log("fetchStockPrices", result);
       return result;
    } catch (error) {
-      console.log(error);
+      console.log("fetchStockPrices", error);
    }
 }

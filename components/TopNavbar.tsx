@@ -1,11 +1,36 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
+import { usePathname } from "next/navigation";
+import { useContext } from "react";
+import { StockContext } from "@/context/StockContext";
 
 function TopNavbar() {
+   const { megaStock } = useContext(StockContext);
+   const pathname = usePathname();
+   const paths: { [key: string]: string } = {
+      stock: "Stock",
+   };
+   const pathArr = pathname.split("/");
    return (
       <div className="w-full flex justify-between items-center relative">
-         <h1 className="text-4xl font-bold hidden sm:block">Dashboard</h1>
+         {megaStock?.companyProfile2?.logo ? (
+            <div className="flex items-center gap-3">
+               <img
+                  src={megaStock?.companyProfile2?.logo}
+                  alt=""
+                  className="rounded-lg"
+               />
+               <h1 className="text-4xl font-bold hidden sm:block">
+                  {megaStock.companyProfile2.name}
+               </h1>
+            </div>
+         ) : (
+            <h1 className="text-4xl font-bold hidden sm:block">
+               {(pathname === "/" && "Dashboard") || paths[pathArr[1]]}
+            </h1>
+         )}
          <Link href="/" className="logo">
             <Image
                className="saturate-200 sm:hidden -translate-x-2"
