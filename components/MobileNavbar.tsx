@@ -48,7 +48,6 @@ function MobileNavbar() {
                   style={pathname == "/crypto" ? currentLocation : {}}
                >
                   <Image
-                     // className="transform -translate-x-[0.5px]"
                      src="/blockchain.png"
                      alt="crypto"
                      width={22}

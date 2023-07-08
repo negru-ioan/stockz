@@ -32,29 +32,31 @@ const IndexCard: FC<{ index: IndexProps; img: string; i: number }> = ({
 }) => {
    return (
       <div
-         className={` hover:scale-105 p-3 bg-white rounded-lg shadow-md h-[150px] sm:h-36 w-full sm:w-[320px] border border-gray-400 ${
+         className={`box hover:scale-105 p-3 h-[150px] sm:h-36 sm:w-[320px] ${
             i == 3 && "max-sm:hidden"
          }`}
       >
          <div className="flex py-2">
             <div className="flex flex-col gap-1">
-               <p className="text-base text-gray-600">{index.Name}</p>
-               <p className="text-2xl font-bold text-gray-900">
+               <p className="text-base text-gray-600 dark:text-slate-200">
+                  {index.Name}
+               </p>
+               <p className="text-2xl font-bold text-gray-900 dark:text-swamp-40">
                   ${index.Price}
                </p>
             </div>
             <div className="ml-auto w-16">
                <img
                   src={img}
-                  // src="/gear.png"
                   alt=""
                   className="opacity-90 translate-y-[-5px]"
                />
             </div>
          </div>
-         {/* {index.PercentChange > 0 ? ( */}
          <div className="w-full flex justify-between items-center">
-            <p className="text-sm text-gray-600 ">{index.PriceChange} $</p>
+            <p className="text-sm text-gray-600 dark:text-slate-200">
+               {index.PriceChange} $
+            </p>
             <PercentChange change={index.PercentChange} />
          </div>
       </div>

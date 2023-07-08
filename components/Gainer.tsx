@@ -15,18 +15,18 @@ type Props = {
 function Gainer({ name, stockName, price, change, image }: Props) {
    const [stockImg, setStockImg] = useState<string | undefined>(undefined);
 
-   // useEffect(() => {
-   //    const fetchStockImage = async () => {
-   //       try {
-   //          const image = await fetchStockImg(stockName);
-   //          setStockImg(image.logo);
-   //       } catch (error) {
-   //          console.error(error);
-   //       }
-   //    };
+   useEffect(() => {
+      const fetchStockImage = async () => {
+         try {
+            const image = await fetchStockImg(stockName);
+            setStockImg(image.logo);
+         } catch (error) {
+            console.error(error);
+         }
+      };
 
-   //    fetchStockImage();
-   // }, []);
+      fetchStockImage();
+   }, []);
 
    change = Number(change.toFixed(2));
 
@@ -46,12 +46,8 @@ function Gainer({ name, stockName, price, change, image }: Props) {
 
          <div className="w-full pl-2 pr-1">
             <div className="flex w-full justify-between">
-               <p className="text-md text-slate-800 font-semibold truncate w-[167px]">
-                  {name}
-               </p>
-               <p className="text-md text-slate-800 font-semibold">
-                  {price.toFixed(2)}$
-               </p>
+               <p className="text-md heading truncate w-[167px]">{name}</p>
+               <p className="text-md heading">{price.toFixed(2)}$</p>
             </div>
             <div className="flex w-full justify-between">
                <p className="text-md text-slate-400">{stockName}</p>

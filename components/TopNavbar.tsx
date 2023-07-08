@@ -15,7 +15,7 @@ function TopNavbar() {
    const pathArr = pathname.split("/");
    return (
       <div className="w-full flex justify-between items-center relative">
-         {megaStock?.companyProfile2?.logo ? (
+         {megaStock?.companyProfile2?.logo && pathname !== "/" ? (
             <div className="flex items-center gap-3">
                <img
                   src={megaStock?.companyProfile2?.logo}
@@ -25,13 +25,19 @@ function TopNavbar() {
                <h1 className="text-4xl font-bold hidden sm:block">
                   {megaStock.companyProfile2.name}
                </h1>
+               <h1 className="text-4xl font-bold block sm:hidden">
+                  {megaStock.basicFinancials.symbol.toUpperCase()}
+               </h1>
             </div>
          ) : (
             <h1 className="text-4xl font-bold hidden sm:block">
                {(pathname === "/" && "Dashboard") || paths[pathArr[1]]}
             </h1>
          )}
-         <Link href="/" className="logo">
+         <Link
+            href="/"
+            className={`logo ${pathname.includes("/stock") && "hidden"}`}
+         >
             <Image
                className="saturate-200 sm:hidden -translate-x-2"
                src="/logo2.png"
@@ -48,8 +54,8 @@ function TopNavbar() {
                   name="searchQueryInput"
                   placeholder="Search"
                   value=""
-               /> 
-               <button 
+               />
+               <button
                   id="searchQuerySubmit"
                   type="submit"
                   name="searchQuerySubmit"

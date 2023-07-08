@@ -1,17 +1,24 @@
-import TopNavbar from "@/components/TopNavbar";
 import ChartPanel from "@/components/ChartPanel";
-import Movers from "@/components/Mover";
 import GlobalIndexes from "@/components/GlobalIndexes";
 import MoversContainer from "@/components/MoversContainer";
+import News from "@/components/News";
+import TrendingStocks from "@/components/TrendingStocks";
+import InsiderTrading from "@/components/InsiderTrading";
 
 export default function Home() {
    return (
       <>
-         {/* <ChartPanel symbol="TSLA" /> */}
+         <ChartPanel symbol="TSLA" />
 
-         {/* <GlobalIndexes /> */}
+         <GlobalIndexes />
 
          <MoversContainer />
+
+         <TrendingStocks />
+
+         <InsiderTrading max={false} />
+
+         <News symbol="TSLA" />
       </>
    );
 }

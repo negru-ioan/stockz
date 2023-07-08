@@ -1,9 +1,10 @@
+const baseUrl = "https://finnhub.io/api/v1/";
+const apiKey = process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
+
 async function fetchAllStockData(symbol: string) {
-   const baseUrl = "https://finnhub.io/api/v1/";
-   const apiKey = process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
    let stock: any = {};
 
-   const fetchData = async (url: string, key: string) => {
+   async function fetchData(url: string, key: string) {
       try {
          const res = await fetch(url);
          const data = await res.json();
@@ -11,8 +12,7 @@ async function fetchAllStockData(symbol: string) {
       } catch (error) {
          console.log(error);
       }
-   };
-
+   }
    //    const fetchSymbolLookup = async () => {
    //       const url = `${baseUrl}search?q=${symbol}&token=${apiKey}`;
    //       await fetchData(url, "symbolLookup");
@@ -38,3 +38,19 @@ async function fetchAllStockData(symbol: string) {
 }
 
 export default fetchAllStockData;
+
+export async function fetchNews(
+   symbol: string,
+   from: string = Date.now().toLocaleString(),
+   to: string
+) {
+   const url = `${baseUrl}company-news?symbol=${symbol}&from=${from}&to=${to}&token=${apiKey}`;
+   try {
+      const res = await fetch(url);
+      const data = await res.json();
+      return data;
+   } catch (error) {
+      console.log(error);
+      return null;
+   }
+}

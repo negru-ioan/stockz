@@ -1,6 +1,3 @@
-// "use client";
-// import { useContext } from "react";
-// import { StockContext } from "@/context/StockContext";
 type Props = {
    selectedTab: string;
    tabs: string[];
@@ -8,10 +5,14 @@ type Props = {
 };
 
 function Tabs({ selectedTab, tabs, onClick }: Props) {
-   // const { selectedTab, tabs } = useContext(StockContext);
+   const translateTabs: { [key: string]: string } = {
+      "1h": "1H",
+      "1day": "1D",
+      "1month": "1M",
+      "1week": "1W",
+   };
    return (
-      // <div className="max-sm:w-full grid grid-cols-4 gap-2 h-min rounded-lg bg-apple-100 mt-1 py-1">
-      <div className="w-max flex flex-row gap-2 h-min rounded-lg bg-apple-100 mt-1 p-1">
+      <div className="w-max flex flex-row gap-2 h-min rounded-lg bg-apple-100 dark:bg-swamp-40 mt-1 p-1">
          {tabs.map((tab, index) => {
             return (
                <div
@@ -23,7 +24,9 @@ function Tabs({ selectedTab, tabs, onClick }: Props) {
                         : "text-slate-600"
                   }`}
                >
-                  <p className="text-sm text-center">{tab}</p>
+                  <p className="text-sm text-center">
+                     {translateTabs[tab] || tab}
+                  </p>
                </div>
             );
          })}

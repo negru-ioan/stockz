@@ -4,7 +4,7 @@ const juicyStocks = [
    "AMZN Amazon",
    "GOOGL Alphabet",
    "MSFT Microsoft",
-   "FB Facebook",
+   "META Facebook",
    "NVDA NVIDIA",
    "JPM JPMorgan Chase",
    "V Visa",
@@ -98,7 +98,7 @@ const juicyStocks = [
 import { NextResponse } from "next/server";
 
 export async function GET() {
-   return NextResponse.json([...juicyStocks]);
+   return NextResponse.json(juicyStocks);
 }
 
 // Print the stock names assigned to each letter

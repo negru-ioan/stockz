@@ -1,4 +1,3 @@
-import SmallDropdown from "./SmallDropdown";
 import Gainer from "./Gainer";
 
 const images = [
@@ -38,9 +37,9 @@ function Mover({ category, categoryName }: MoverProps) {
    };
 
    return (
-      <div className="top_gainers border sm:mb-7 sm:mt-14 bg-white p-5 rounded-lg border-gray-400 max-md:h-96">
+      <div className="top_gainers box border sm:mb-7 sm:mt-14 bg-white p-5 rounded-lg border-gray-400 max-md:h-[377px]">
          <div className="flex items-center w-full">
-            <h3 className="text-start text-2xl font-semibold text-black w-full">
+            <h3 className="heading text-start text-2xl w-full">
                {names[categoryName]}
             </h3>
 

@@ -20,9 +20,8 @@ function PercentChange({ change }: { change: number }) {
             }
          />
          <p
-            className={`text-sm sm:text-base ${
-               change < 0 ? "text-red-500" : "text-apple-400"
-            }`}
+            className="text-sm sm:text-base"
+            style={{ color: change < 0 ? "#f44336" : "#00ee00" }}
          >
             {change > 0 && "+"}
             {change.toFixed(2)}%

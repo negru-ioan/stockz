@@ -42,7 +42,7 @@ function Navbar() {
    ];
    return (
       <nav
-         className="hidden sm:block h-screen fixed top-0 left-0 bg-white max-md:w-16 z-50 border-r border-apple-300"
+         className="hidden sm:block h-screen fixed top-0 left-0 bg-white dark:bg-swamp-900 max-md:w-16 z-50 border-r border-apple-300 dark:border-swamp-40"
          style={{ width: open ? "170px" : "65px" }}
       >
          <div className="flex justify-between sm:justify-normal flex-col pl-3 py-3 h-full">
@@ -70,6 +70,7 @@ function Navbar() {
                         >
                            <Link href={link.pathname} className="nav_link">
                               <img
+                                 className="dark:invert"
                                  src={link.img}
                                  alt={link.name}
                                  width={link.width}

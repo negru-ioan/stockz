@@ -1,68 +1,3 @@
-// "use client";
-// import { useEffect, useRef } from "react";
-// import Chart from "chart.js";
-
-// interface BarChartProps {
-//    labels: string[];
-//    data: number[];
-//    label: string;
-// }
-
-// const BarChart: React.FC<BarChartProps> = ({ labels, data, label = "USD" }) => {
-//    const chartRef = useRef<HTMLCanvasElement>(null);
-
-//    useEffect(() => {
-//       let chart: Chart;
-
-//       if (chartRef.current) {
-//          const ctx = chartRef.current.getContext("2d");
-//          if (ctx) {
-//             chart = new Chart(ctx, {
-//                type: "bar",
-//                data: {
-//                   labels,
-//                   datasets: [
-//                      {
-//                         label,
-//                         data,
-//                         backgroundColor: "#defade",
-//                         borderColor: "#32cd32",
-//                         borderWidth: 1,
-//                      },
-//                   ],
-//                },
-//                options: {
-//                   responsive: true,
-//                   maintainAspectRatio: false,
-//                   aspectRatio: 2,
-//                   onResize: () => {},
-//                   scales: {
-//                      x: {
-//                         grid: {
-//                            display: false,
-//                         },
-//                      },
-//                      y: {
-//                         beginAtZero: true,
-//                      },
-//                   },
-//                },
-//             });
-//          }
-//       }
-
-//       return () => {
-//          if (chart) {
-//             chart.destroy();
-//          }
-//       };
-//    }, [labels, data]);
-
-//    return <canvas ref={chartRef} width={"100%"} />;
-// };
-
-// export default BarChart;
-
 import { useEffect, useRef } from "react";
 import Chart, { ChartType, ChartOptions } from "chart.js";
 
@@ -104,14 +39,32 @@ const BarChart: React.FC<BarChartProps> = ({ labels, data, label = "USD" }) => {
                   maintainAspectRatio: true,
                   aspectRatio: 2,
                   onResize: () => {},
+                  // scales: {
+                  //    x: {
+                  //       grid: {
+                  //          display: false,
+                  //       },
+                  //    },
+                  //    y: {
+                  //       beginAtZero: true,
+                  //    },
+                  // },
                   scales: {
                      x: {
+                        ticks: {
+                           color: "red", // Color for the x-axis tick labels
+                        },
                         grid: {
-                           display: false,
+                           borderColor: "rgba(255, 0, 0, 0.5)", // Color for the x-axis gridlines
                         },
                      },
                      y: {
-                        beginAtZero: true,
+                        ticks: {
+                           color: "green", // Color for the y-axis tick labels
+                        },
+                        grid: {
+                           borderColor: "rgba(0, 255, 0, 0.5)", // Color for the y-axis gridlines
+                        },
                      },
                   },
                },

@@ -8,11 +8,25 @@ type Props = {
    setQuery: (query: string) => void;
    options: string[];
    query: string;
+   onClick: (event: any) => void;
 };
 
-function Dropdown({ selected, setSelected, setQuery, options, query }: Props) {
+function Dropdown({
+   selected,
+   setSelected,
+   setQuery,
+   options,
+   query,
+   onClick,
+}: Props) {
    return (
-      <Combobox value={selected} onChange={setSelected}>
+      <Combobox
+         value={selected}
+         onChange={(val) => {
+            setSelected(val);
+            onClick(val);
+         }}
+      >
          <div className="relative mt-1 border border-slate-300 rounded-md">
             <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
                <Combobox.Input

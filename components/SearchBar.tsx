@@ -3,13 +3,20 @@
 import { useEffect, useState, useMemo } from "react";
 import Dropdown from "./Dropdown";
 
-async function getStocks() {
-   const res = await fetch("/stocks?_rsc=a768e99");
-   const stocks = await res.json();
-   return stocks;
+async function getStocksAndCryptos() {
+   const [resStocks, resCryptos] = await Promise.all([
+      fetch("/stocks?_rsc=a768e99"),
+      fetch("/cryptos?_rsc=a768e99"),
+   ]);
+
+   const [cryptos, stocks] = await Promise.all([
+      resCryptos.json(),
+      resStocks.json(),
+   ]);
+
+   return [...cryptos, ...stocks];
 }
 
-// Custom debounce hook
 function useDebounce<T>(value: T, delay: number): T {
    const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
@@ -33,12 +40,8 @@ export default function SearchBar() {
    const debouncedQuery = useDebounce<string>(query, 300);
 
    useEffect(() => {
-      getStocks().then((stonks) => setStocks(stonks));
+      getStocksAndCryptos().then((stonks) => setStocks(stonks));
    }, []);
-   // funtione
-   // useEffect(() => {
-   //    console.log(selected, 11);
-   // }, [selected]);
 
    const filteredStocks = useMemo(() => {
       if (debouncedQuery === "") {
@@ -53,6 +56,9 @@ export default function SearchBar() {
    return (
       <div className="searchBar w-full sm:w-72 max-sm:absolute top-[90px] right-0 left-0 z-50">
          <Dropdown
+            onClick={(tab) => {
+               window.location.pathname = "stock/" + tab.split(" ")[0];
+            }}
             selected={selected}
             setSelected={setSelected}
             setQuery={setQuery}

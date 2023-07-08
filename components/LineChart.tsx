@@ -18,16 +18,6 @@ const LineChart = ({ data, labels, status }: Props) => {
       );
    }
 
-   // const {values} = stock
-   // const prices = stock.values.map((obj) => Number(obj.open).toFixed(2));
-   // const dates = stock.values.map((obj) => obj.datetime.replace(/20/i, ""));
-
-   // const stockData = stock.values.map((value) => Number(value.open).toFixed(2));
-   // const stockLabels = stock.values.datetime;
-
-   // Fallback to default values if data or labels are not provided
-   // const chartData = data || stockData;
-   // const chartLabels = labels || stockLabels;
    const chartRef = useRef<HTMLCanvasElement | null>(null);
    useEffect(() => {
       if (chartRef.current) {
@@ -36,20 +26,12 @@ const LineChart = ({ data, labels, status }: Props) => {
             const lineChart = new Chart(chartCanvas, {
                type: "line",
                data: {
-                  // labels: stock.values
-                  //    .map((obj) => obj.datetime.replace(/20/i, ""))
-                  //    .reverse(),
                   labels,
                   datasets: [
                      {
-                        // data: stock.values
-                        //    .map((obj) =>
-                        //       parseFloat(Number(obj.open).toFixed(2))
-                        //    )
-                        //    .reverse(),
                         data,
                         label: "USD",
-                        backgroundColor: "#f2fcf1",
+                        backgroundColor: "#D5FAD5",
                         borderColor: "#54d454",
                         borderWidth: 2,
                      },

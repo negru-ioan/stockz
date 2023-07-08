@@ -5,7 +5,10 @@ interface MenuProps {
 
 function Menu({ open, toggle }: MenuProps) {
    return (
-      <div className="w-full p-2 flex cursor-pointer" onClick={toggle}>
+      <div
+         className="w-full p-2 flex cursor-pointer dark:invert"
+         onClick={toggle}
+      >
          <button type="button">
             <span
                role="img"
