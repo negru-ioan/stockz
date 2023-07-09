@@ -39,34 +39,6 @@ const BarChart: React.FC<BarChartProps> = ({ labels, data, label = "USD" }) => {
                   maintainAspectRatio: true,
                   aspectRatio: 2,
                   onResize: () => {},
-                  // scales: {
-                  //    x: {
-                  //       grid: {
-                  //          display: false,
-                  //       },
-                  //    },
-                  //    y: {
-                  //       beginAtZero: true,
-                  //    },
-                  // },
-                  scales: {
-                     x: {
-                        ticks: {
-                           color: "red", // Color for the x-axis tick labels
-                        },
-                        grid: {
-                           borderColor: "rgba(255, 0, 0, 0.5)", // Color for the x-axis gridlines
-                        },
-                     },
-                     y: {
-                        ticks: {
-                           color: "green", // Color for the y-axis tick labels
-                        },
-                        grid: {
-                           borderColor: "rgba(0, 255, 0, 0.5)", // Color for the y-axis gridlines
-                        },
-                     },
-                  },
                },
             };
 

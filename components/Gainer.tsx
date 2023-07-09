@@ -9,10 +9,9 @@ type Props = {
    stockName: string;
    price: number;
    change: number;
-   image: string;
 };
 
-function Gainer({ name, stockName, price, change, image }: Props) {
+function Gainer({ name, stockName, price, change }: Props) {
    const [stockImg, setStockImg] = useState<string | undefined>(undefined);
 
    useEffect(() => {

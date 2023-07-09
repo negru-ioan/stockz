@@ -55,7 +55,6 @@ function Mover({ category, categoryName }: MoverProps) {
                         stockName={stock.ticker}
                         price={stock.lastPrice}
                         change={stock.percentNetChange}
-                        img={images[i]}
                      />
                   );
                })}

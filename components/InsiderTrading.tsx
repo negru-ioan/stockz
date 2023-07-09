@@ -144,9 +144,9 @@ const InsiderTrading = async ({ max }: { max: boolean }) => {
                            <td className="px-6 py-4">
                               {(item.reportingOwner.relationship &&
                                  Object.entries(
-                                    item.reportingOwner.relationship
+                                    item?.reportingOwner?.relationship ?? {}
                                  )
-                                    .find((arr) => arr[1])[0]
+                                    .find((arr) => arr[1])?.[0]
                                     .slice(2)) ||
                                  "N/A"}
                            </td>
@@ -178,17 +178,31 @@ const InsiderTrading = async ({ max }: { max: boolean }) => {
                            <td className="px-6 py-4">
                               $
                               {millify(
-                                 item?.nonDerivativeTable?.transactions?.[0]
-                                    ?.amounts?.pricePerShare ?? 0
+                                 (
+                                    item?.nonDerivativeTable?.transactions?.[0]
+                                       ?.amounts as { pricePerShare?: number }
+                                 )?.pricePerShare ?? 0
                               )}
                            </td>
                            <td className="px-6 py-4">
                               $
                               {millify(
-                                 item?.nonDerivativeTable?.transactions?.[0]
-                                    ?.amounts?.shares *
+                                 ((
                                     item?.nonDerivativeTable?.transactions?.[0]
-                                       ?.amounts?.pricePerShare ?? 0
+                                       ?.amounts as {
+                                       shares: number;
+                                       pricePerShare?: number;
+                                       acquiredDisposedCode: string;
+                                    }
+                                 )?.shares || 1) *
+                                    ((
+                                       item?.nonDerivativeTable
+                                          ?.transactions?.[0]?.amounts as {
+                                          shares: number;
+                                          pricePerShare?: number;
+                                          acquiredDisposedCode: string;
+                                       }
+                                    )?.pricePerShare || 0) ?? 0
                               )}
                            </td>
                         </tr>

@@ -17,7 +17,7 @@ function StockPage() {
    const [labels, setLabels] = useState<string[]>([]);
    const [selected, setSelected] = useState("eps");
    const [query, setQuery] = useState("");
-   const [timeFrame, setTimeFrame] = useState<"annual" | "quarterly">("annual");
+   const [timeFrame, setTimeFrame] = useState("annual");
    const { megaStock, setMegaStock } = useContext(StockContext);
 
    function splitDataLabels() {
@@ -259,7 +259,7 @@ function StockPage() {
                      <Tabs
                         selectedTab={timeFrame}
                         tabs={["annual", "quarterly"]}
-                        onClick={(tab) => setTimeFrame(tab)}
+                        onClick={(tab: string) => setTimeFrame(tab)}
                      />
 
                      <p className="text-2xl font-semibold text-slate-900 dark:text-swamp-40 w-full text-center max-sm:hidden">

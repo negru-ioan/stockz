@@ -8,7 +8,7 @@ type Props = {
    setQuery: (query: string) => void;
    options: string[];
    query: string;
-   onClick: (event: any) => void;
+   onClick?: (event: any) => void;
 };
 
 function Dropdown({
@@ -24,7 +24,7 @@ function Dropdown({
          value={selected}
          onChange={(val) => {
             setSelected(val);
-            onClick(val);
+            if (onClick) onClick(val);
          }}
       >
          <div className="relative mt-1 border border-slate-300 rounded-md">

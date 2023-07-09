@@ -8,11 +8,48 @@ const pngs = {
    CAN: "https://img.icons8.com/?size=512&id=cYRU7TBWwNVs&format=png",
 };
 
+type Index = {
+   PerformanceId: string;
+   RegionAndTicker: string;
+   Currency: string;
+   Exchange: string;
+   ExchangeShortName: string;
+   ExchangeTimeZoneOffsetFromUTCInSeconds: number;
+   Name: string;
+   StarRating: null;
+   Type: string;
+   Price: number;
+   PriceChange: number;
+   PercentChange: number;
+   OpenPrice: number;
+   Volume: null;
+   DayHigh: number;
+   DayLow: number;
+   ActivityTimeUTC: string;
+   ExchangeActivityTimeLabel: string;
+   AverageVolume: number;
+   InceptionDate: string;
+   YesterdayPrice: number;
+};
+
+type Res = {
+   MarketRegions: {
+      [key: string]: Index[];
+   };
+   Barometers: {
+      [key: string]: {
+         PercentChange: number;
+         Level: number;
+      }[];
+   };
+   Timestamp: string;
+};
+
 async function GlobalIndexes() {
    let selected = [2, 2, 0, 0];
-   const res = await fetchIndexes();
+   const res: Res = await fetchIndexes();
    const indexes = Object.values(res.MarketRegions).map(
-      (arr, i) => arr[selected[i]]
+      (arr, i) => (arr as Index[])[selected[i]]
    );
 
    return (
@@ -22,7 +59,7 @@ async function GlobalIndexes() {
                Global Indexes
             </h1>
             <h1 className="text-end text-3xl font-semibold w-full">
-               {new Date(indexes.Timestamp).toDateString()}
+               {new Date(res.Timestamp).toDateString()}
             </h1>
          </div>
          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 max-sm:w-full max-lg:gap-x-14 max-lg:gap-y-8 mb-10">

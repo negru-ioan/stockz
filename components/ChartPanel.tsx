@@ -3,11 +3,11 @@
 import { useContext, useEffect } from "react";
 import LineChart from "./LineChart";
 import { StockContext } from "@/context/StockContext";
-import { SelectedTab } from "@/types";
+// import { SelectedTab } from "@/types";
 import Tabs from "./Tabs";
 
 function ChartPanel({ symbol }: { symbol: string }) {
-   const { stock, tabs, selectedTab, setSelectedTab, changeStock, changeTab } =
+   const { stock, tabs, selectedTab, changeStock, changeTab } =
       useContext(StockContext);
 
    useEffect(() => {
@@ -29,7 +29,7 @@ function ChartPanel({ symbol }: { symbol: string }) {
                   <span className="text-apple-400">{stock.meta.exchange}</span>
                </h1>
                <p className="relative top-0 left-0 text-xl max-sm:hidden">
-                  ${Number(stock.values[0].open).toFixed(2)}
+                  ${Number(stock?.values?.[0]?.open).toFixed(2)}
                </p>
                <div className="max-sm:w-full">
                   <Tabs
@@ -42,11 +42,15 @@ function ChartPanel({ symbol }: { symbol: string }) {
             <div className="w-full flex mx-auto my-auto">
                <div className="p-1 pl-0 w-full md:h-52 lg:h-96 my-auto">
                   <LineChart
-                     data={stock.values
-                        .map((obj) => parseFloat(Number(obj.open).toFixed(2)))
-                        .reverse()}
-                     labels={stock.values.map((obj) => obj.datetime).reverse()}
-                     status={stock.status}
+                     data={stock?.values
+                        ?.map((obj) =>
+                           parseFloat(Number(obj?.open)?.toFixed(2))
+                        )
+                        ?.reverse()}
+                     labels={stock?.values
+                        ?.map((obj) => obj?.datetime)
+                        ?.reverse()}
+                     status={stock?.status}
                   />
                </div>
             </div>

@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useEffect } from "react";
 import fetchStockPrices from "../fetch/fetchStockPrice";
-import { Props_fetchStockPrices, SelectedTab } from "../types";
+import { Props_fetchStockPrices } from "../types";
 import meeegaStock from "@/megaStock";
 const tsla = {
    meta: {
@@ -36,7 +36,7 @@ export const StockContext = createContext({
    stock: tsla,
    selectedTab: tabs[2],
    tabs,
-   changeTab: (tab: SelectedTab, symbol: string) => {},
+   changeTab: (tab: string, symbol: string) => {},
    changeStock: async (stock: Props_fetchStockPrices | null) => {},
    setSelectedTab: (tab: string) => {},
 });
@@ -70,7 +70,7 @@ export const StockProvider = ({ children }: any) => {
    //    );
    // }
 
-   function changeTab(tab: SelectedTab, symbol: string) {
+   function changeTab(tab: string, symbol: string) {
       console.log({ ...options, symbol, interval: tab }, 69420);
       changeStock({ ...options, symbol, interval: tab }).then((data): any =>
          setStock(data)
