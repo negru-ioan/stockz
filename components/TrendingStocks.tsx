@@ -64,6 +64,7 @@ async function TrendingStocks() {
                            className={`box hover:scale-105 p-3 h-[150px] sm:h-36 sm:w-[320px] ${
                               i == 3 && "max-sm:hidden"
                            }`}
+                           key={stock.name}
                         >
                            <div className="flex py-2">
                               <div className="flex flex-col gap-1">

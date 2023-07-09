@@ -71,7 +71,6 @@ export const StockProvider = ({ children }: any) => {
    // }
 
    function changeTab(tab: string, symbol: string) {
-      console.log({ ...options, symbol, interval: tab }, 69420);
       changeStock({ ...options, symbol, interval: tab }).then((data): any =>
          setStock(data)
       );

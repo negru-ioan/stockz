@@ -54,7 +54,6 @@ function StockPage() {
       fetchAllStockData(symbol)
          .then((result) => {
             setMegaStock(result);
-            console.log("xyxy", result);
          })
          .catch((error) => {
             console.error(error);

@@ -11,7 +11,6 @@ async function fetchIndexes() {
    try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log("fetchIndexes", result);
       return result;
    } catch (error) {
       console.error(error);

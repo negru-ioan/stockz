@@ -68,6 +68,7 @@ async function GlobalIndexes() {
                indexes.map((index, i) => {
                   return (
                      <IndexCard
+                        key={index.PerformanceId}
                         index={index}
                         img={Object.values(pngs)[i]}
                         i={i}

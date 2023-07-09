@@ -100,10 +100,3 @@ import { NextResponse } from "next/server";
 export async function GET() {
    return NextResponse.json(juicyStocks);
 }
-
-// Print the stock names assigned to each letter
-// for (let i = 0; i < 182; i += 7) {
-//    const letter = stockNames[i][0].toUpperCase();
-//    const stocks = stockNames.slice(i, i + 7);
-//    console.log(`Stocks starting with letter '${letter}':`, stocks);
-// }
